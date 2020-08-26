@@ -1,15 +1,11 @@
 import { add } from './calculator'
+import { onClick, getA, getB, getButton, write } from './dom'
 
 export function initEventHandlers() {
-  const button = document.getElementById('my-button')
-  button.addEventListener('click', () => {
+  const button = getButton()
+
+  onClick(button, () => {
     const sum = add(getA(), getB())
     write(sum)
   })
 }
-
-const getA = () => document.getElementById('input-a').value
-
-const getB = () => document.getElementById('input-b').value
-
-const write = value => (document.getElementById('output').innerHTML = value)
